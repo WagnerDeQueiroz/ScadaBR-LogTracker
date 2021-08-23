@@ -167,7 +167,9 @@
 
 <h1>Arquivos de Log</h1>
  
- <ul>
+<label for="arquivos">nome de Arquivo:</label>
+
+<select name="arquivos" id="arquivos">
 <%
 String root=System.getProperty("catalina.home")+File.separator+"logs"+File.separator  ;
 java.io.File file;
@@ -177,17 +179,21 @@ String[] list = dir.list();
 
 if (list.length > 0) {
 
+
 for (int i = 0; i < list.length; i++) {
   file = new java.io.File(root + list[i]);
   if (!file.isDirectory()) {
   %>
-  <li><a href="<%=list[i]%>" target="_top"><%=root+list[i]%></a><br>
+  <!-- <li><a href="<%=list[i]%>" target="_top"><%=root+list[i]%></a><br>
+  -->
+	  <option value="<%=i%>"><%=root+list[i]%></option>
   <%
      }
   }
 }
 %>
-</ul>
+ </select> 
+	  
  
  
 <p> fim da lista
